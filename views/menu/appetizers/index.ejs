@@ -1,0 +1,175 @@
+<% include ../../partials/header %>
+
+<div class="container">
+    
+<!--move style later-->
+    <div>
+        <a role="button" class="btn btn-info" href="/index/menu"><i class="fas fa-arrow-circle-left"></i> Go Back</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle jump-to" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jump To:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#jump_to_appetizers">Appetizers</a>
+                <a class="dropdown-item" href="#jump_to_sides">Sides</a>
+                <a class="dropdown-item" href="#jump_to_salads">Salads</a>
+                <a class="dropdown-item" href="#jump_to_a_la_carte">A La Carte</a>
+            </div>
+        </div>
+    </div>
+    
+    <a id="jump_to_appetizers" class="anchor"></a>
+
+    <h1 class="text-center">Appetizers</h1>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/appetizers/appetizer/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% appetizers.forEach(function(appetizer){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= appetizer.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= appetizer.name %></h5>
+                        <hr>
+                        <a href="/index/menu/appetizers/appetizer/<%= appetizer._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= appetizer._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= appetizer.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= appetizer.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="appetizers/appetizer/<%= appetizer._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+
+            </div>
+        <% }); %>
+        
+    </div>
+    
+    <hr>
+    
+    <a id="jump_to_sides" class="anchor"></a>
+    
+    <h1 class="text-center">Sides</h1>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/appetizers/side/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% sides.forEach(function(side){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= side.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= side.name %></h5>
+                        <hr>
+                        <a href="/index/menu/appetizers/side/<%= side._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= side._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= side.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= side.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="appetizers/side/<%= side._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+        <% }); %>
+    
+    </div>
+    
+    <hr>
+    
+    <a id="jump_to_salads" class="anchor"></a>
+    
+    <h1 class="text-center">Salads</h1>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/appetizers/salad/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% salads.forEach(function(salad){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= salad.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= salad.name %></h5>
+                        <hr>
+                        <a href="/index/menu/appetizers/salad/<%= salad._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= salad._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= salad.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= salad.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="appetizers/salad/<%= salad._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        <% }); %>
+        
+    </div>
+    
+    <hr> 
+    
+    <a id="jump_to_a_la_carte" class="anchor"></a>
+    
+    <h1 class="text-center">A La Carte</h1>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/appetizers/alacarte/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% aLaCartes.forEach(function(aLaCarte){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= aLaCarte.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= aLaCarte.name %></h5>
+                        <hr>
+                        <a href="/index/menu/appetizers/aLaCarte/<%= aLaCarte._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= aLaCarte._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= aLaCarte.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= aLaCarte.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="appetizers/aLaCarte/<%= aLaCarte._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        <% }); %>
+    
+    </div>
+        
+
+</div>
+
+<% include ../../partials/footer %> 

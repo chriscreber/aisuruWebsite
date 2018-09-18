@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+
+<!--<h1>Sign Up!</h1>-->
+
+<!--<form action="/register" method="post">-->
+<!--    <input type="text" name="username" placeholder="username">-->
+<!--    <input type="text" name="email" placeholder="email">-->
+<!--    <input type="text" name="cemail" placeholder="confirm email">-->
+<!--    <input type="password" name="password" placeholder="password">-->
+<!--    <input type="password" name="cpassword" placeholder="confirm password">-->
+<!--    <button>Sign Up</button>-->
+<!--</form>-->
+
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<form action="/register" method="post">
+    <div class="container-fluid">
+        <section class="container">
+    		<div class="container-page">				
+    			<div class="col-md-6">
+    				<h3 class="dark-grey">Registration</h3>
+    				
+    				<div class="form-group col-lg-12">
+    					<label>Username</label>
+    					<input type="text" class="form-control" name="username" placeholder="username">
+    				</div>
+    				
+    				<div class="form-group col-lg-6">
+    					<label>Password</label>
+    					<input type="password" class="form-control" name="password" placeholder="password">
+    				</div>
+    				
+    				<div class="form-group col-lg-6">
+    					<label>Repeat Password</label>
+    					<input type="password" class="form-control" name="cpassword" placeholder="confirm password">
+    				</div>
+    								
+    				<div class="form-group col-lg-6">
+    					<label>Email Address</label>
+    					<input type="text" class="form-control" name="email" placeholder="email">
+    				</div>
+    				
+    				<div class="form-group col-lg-6">
+    					<label>Repeat Email Address</label>
+    					<input type="text" class="form-control" name="cemail" placeholder="confirm email">
+    				</div>			
+    			
+    			</div>
+    		
+    			<div class="col-md-6">
+    				<h3 class="dark-grey">Terms and Conditions</h3>
+    				<p>
+    					By clicking on "Register" you agree to The Company's' Terms and Conditions
+    				</p>
+    				<p>
+    					Harassment of other users with result in the deletion of your account.
+    				</p>
+    				
+    				<button type="submit" class="btn btn-primary">Register</button>
+    			</div>
+    		</div>
+    	</section>
+    </div>
+</form>
+
+
+<% include ../partials/footer %>

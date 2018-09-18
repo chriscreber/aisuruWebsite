@@ -1,0 +1,137 @@
+<% include ../../partials/header %>
+
+<div class="container">
+    
+<!--move style later-->
+    <div>
+        <a role="button" class="btn btn-info" href="/index/menu"><i class="fas fa-arrow-circle-left"></i> Go Back</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle jump-to" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jump To:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#jump_to_kitchen_entrees">Kitchen Entrees</a>
+                <a class="dropdown-item" href="#jump_to_rice_bowls">Rice Bowls</a>
+                <a class="dropdown-item" href="#jump_to_noodles">Noodles</a>
+            </div>
+        </div>
+    </div>
+    
+    <a id="jump_to_kitchen_entrees" class="anchor"></a>
+
+    <h1 class="text-center">Kitchen Entrees</h1>
+    <p class="text-center">Includes: Miso, sunomuno, and rice</p>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/kitchen/kitchenEntree/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% kitchenEntrees.forEach(function(kitchenEntree){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= kitchenEntree.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= kitchenEntree.name %></h5>
+                        <hr>
+                        <a href="/index/menu/kitchen/kitchenEntree/<%= kitchenEntree._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= kitchenEntree._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= kitchenEntree.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= kitchenEntree.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="kitchen/kitchenEntree/<%= kitchenEntree._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+
+            </div>
+        <% }); %>
+        
+    </div>
+    
+    <hr>
+    
+    <a id="jump_to_rice_bowls" class="anchor"></a>
+
+    <h1 class="text-center">Rice Bowls</h1>
+    <p class="text-center">Includes: Miso and sunomuno</p>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/kitchen/ricebowl/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% ricebowls.forEach(function(ricebowl){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= ricebowl.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= ricebowl.name %></h5>
+                        <hr>
+                        <a href="/index/menu/kitchen/ricebowl/<%= ricebowl._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= ricebowl._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= ricebowl.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= ricebowl.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="kitchen/ricebowl/<%= ricebowl._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+        <% }); %>
+    
+    </div>
+    
+    <hr>
+    
+    <a id="jump_to_noodles" class="anchor"></a>
+    
+    <h1 class="text-center">Noodles</h1>
+    
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/menu/kitchen/noodle/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+    <div class="row text-center">
+        
+        <% noodles.forEach(function(noodle){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= noodle.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= noodle.name %></h5>
+                        <hr>
+                        <a href="/index/menu/kitchen/noodle/<%= noodle._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= noodle._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= noodle.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= noodle.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="kitchen/noodle/<%= noodle._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        <% }); %>
+        
+    </div>
+
+</div>
+
+<% include ../../partials/footer %> 

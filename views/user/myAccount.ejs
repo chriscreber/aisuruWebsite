@@ -1,0 +1,105 @@
+<% include ../partials/header %>
+
+<div class="container">
+    
+    <header class="jumbotron">
+        <div class="container">
+            <h1>This is you personal section</h1>
+            <p>Use it to save your favorite items from the menu</p>
+        </div>
+    </header>
+    
+    <div class="row">
+        <!--make prettier-->
+        <div class="col-lg-6">
+            <h1 class="text-center">Misc.</h1>
+            <hr>
+            <div class="row text-center">
+                <% myFavorites.items.forEach(function(item){ %>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="card">
+                            <img class="card-img-top" src="<%= item.image %>">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title"><%= item.name %></h5>
+                                <hr>
+                                <a href="/index/menu/<%= item.url %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                                <form class="delete-form" action="/myFavorites/<%= item.name %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                </form>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                <% }); %>
+            </div>
+        </div>
+        
+        <!--poke-->
+        <div class="col-lg-6">
+            <h1 class="text-center">Poke Bowls</h1>
+            <hr>
+            <div class="row text-left">
+                <% myFavoritePoke.items.forEach(function(item){ %>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card my-poke">
+                            <div class="card-body">
+                                <h5 class="card-title">Poke Bowl</h5>
+                                <form class="delete-form" action="/myFavoritePoke/<%= item._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                </form>
+                                <hr class="hr-thick">
+                                <p class="card-text p-no-margin">Size:</p>
+                                <div class="create-section-size">
+                                    <% item.size.forEach(function(size){ %>
+                                        <p class="card-text p-no-margin"><%= size %></p>
+                                    <% }); %>
+                                </div>
+                                <hr>
+                                <p class="card-text p-no-margin">Base:</p>
+                                <div class="create-section-base">
+                                    <% item.base.forEach(function(base){ %>
+                                        <p class="card-text p-no-margin"><%= base %></p>
+                                    <% }); %>
+                                </div>
+                                <hr>
+                                <p class="card-text p-no-margin">Meat:</p>
+                                <div class="create-section-meat">
+                                    <% item.meat.forEach(function(meat){ %>
+                                        <p class="card-text p-no-margin"><%= meat %></p>
+                                    <% }); %>
+                                    
+                                </div>
+                                <hr>
+                                <p class="card-text p-no-margin">Toppings:</p>
+                                <div class="create-section-toppings">
+                                    <% item.toppings.forEach(function(topping){ %>
+                                        <p class="card-text p-no-margin"><%= topping %></p>
+                                    <% }); %>
+                                </div>
+                                <hr>
+                                <p class="card-text p-no-margin">Sauce:</p>
+                                <div class="create-section-sauce">
+                                    <% item.sauce.forEach(function(sauce){ %>
+                                        <p class="card-text p-no-margin"><%= sauce %></p>
+                                    <% }); %>
+                                </div>
+                                <hr>
+                                <p class="card-text">Total Price: $<%= item.price %></p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                <% }); %>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<% include ../partials/footer %> 

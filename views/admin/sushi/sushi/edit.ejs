@@ -1,0 +1,40 @@
+<% include ../../../partials/header %>
+
+<div class="container">
+    <div class="row">
+
+        <h1 style="text-align: center;">Edit Menu Item</h1>
+        <div style="width: 30%; margin: 25px auto">
+        
+            <form action="<%= baseUrl %>/<%= menuItem._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[name]" value="<%= menuItem.name %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[image]" value="<%= menuItem.image %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[description]" value="<%= menuItem.description %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[price]" value="<%= menuItem.price[0] %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[price]" value="<%= menuItem.price[1] %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="menuItem[genre]" value="0" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+        
+            <a href="<%= baseUrl %>/<%= menuItem._id %>">Go Back</a>
+        
+        </div>
+        
+    </div>
+</div>
+
+<% include ../../../partials/footer %>

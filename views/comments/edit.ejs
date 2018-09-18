@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <a role="button" class="btn btn-info" href="<%= baseUrl %>/<%= menuItem_id %>"><i class="fas fa-arrow-circle-left"></i> Go Back</a>
+
+    <div class="row">
+
+        
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1>Edit Comment</h1>
+            <form action="<%= baseUrl %>/<%= menuItem_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+        
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

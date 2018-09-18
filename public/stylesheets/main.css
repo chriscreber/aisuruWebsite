@@ -1,0 +1,133 @@
+/*body {*/
+/*    background: #DCDCDC;*/
+/*}*/
+
+
+/*#back-button {*/
+/*    background: #DCDCDC;*/
+/*    color: white;*/
+/*}*/
+
+.card img {
+    width: 100%;
+}
+
+.card {
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.card .caption-full {
+    padding: 9px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.row.text-center {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*for menu headings*/
+h1.text-center {
+  font: 100 50px 'Pacifico', cursive, serif;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*keep navbar at the top*/
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/*so navbar doesnt block other elements*/
+.buffer {
+  padding: 16px;
+  margin-top: 60px;
+  /*height: 1500px; */
+}
+
+/*keep back button at the top*/
+.btn-info {
+    overflow: hidden;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+}
+
+.jump-to {
+    overflow: hidden;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+    right: 9%;
+}
+
+#more-info-btn {
+    float: left;
+}
+
+#float-left {
+    float: left;
+}
+
+.hr-thick {
+    height: 2px; 
+    color: #333; 
+    background-color: #333;
+}
+
+.hr-no-margin {
+    margin: 0;
+    margin-top: 4px;
+}
+
+.p-no-margin {
+    margin: 0;
+}
+
+.anchor {
+    display: block;
+    height: 115px; /*same height as header*/
+    margin-top: -115px; /*same height as header*/
+    visibility: hidden;
+}
+
+.selected {
+    background-color: #00FFFF;
+}
+
+.no-display {
+    display: none;
+}
+
+/*.poke-card {*/
+/*    overflow: hidden;*/
+/*    position: fixed;*/
+/*    top: 60px;*/
+/*    right: 4em;*/
+/*    z-index: 1;*/
+/*}*/
+
+.poke-card-fix {
+    font-size: 10px;
+    overflow: hidden;
+    position: fixed;
+    top: 52%;
+    transform: translateY(-48%);
+    right: 2%;
+    z-index: 1;
+}
+
+.my-poke {
+    font-size: 10px;
+}
+
+
+

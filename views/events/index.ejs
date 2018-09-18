@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+<div class="container">
+    
+    <div>
+        <a role="button" class="btn btn-info" href="/index"><i class="fas fa-arrow-circle-left"></i> Go Back</a>
+    </div>
+    
+    <h1 class="text-center">Events</h1>
+
+    <% if(currentUser && currentUser.username === "admin"){ %>
+        <div>
+            <a href="/index/events/new" class="btn btn-primary">New</a>
+        </div>
+    <% } %>
+    <hr>
+    
+<!--move style later-->
+    <div class="row text-center">
+        
+        
+        <% eventItems.forEach(function(eventItem){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="<%= eventItem.image %>">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= eventItem.name %></h5>
+                        <hr>
+                        <a href="/index/events/<%= eventItem._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                        <form action="/myFavorites/<%= eventItem._id %>?_method=PUT" method="POST">
+                                <input class="form-control" type="text" name="menuItem[name]" value="<%= eventItem.name %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[image]" value="<%= eventItem.image %>" style="display: none;">
+                                <input class="form-control" type="text" name="menuItem[url]" value="lunch/<%= eventItem._id %>" style="display: none;">
+                                <button class="btn btn-warning btn-sm">Favorite</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        <% }); %>
+        
+    </div>
+
+</div>
+
+<% include ../partials/footer %> 

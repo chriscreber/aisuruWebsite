@@ -1,0 +1,232 @@
+<% include ../../partials/header %>
+
+<div class="container">
+    
+    <div>
+        <a role="button" class="btn btn-info" href="/index/menu"><i class="fas fa-arrow-circle-left"></i> Go Back</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle jump-to" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jump To:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#jump_to_drinks">Drinks</a>
+                <a class="dropdown-item" href="#jump_to_desserts">Desserts</a>
+            </div>
+        </div>
+    </div>
+    
+    <a id="jump_to_drinks" class="anchor"></a>
+    
+    <h1 class="text-center">Drinks</h1>
+
+    <hr>
+    
+<!--move style later-->
+    <div class="row text-center">
+        
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                
+                
+                <div class="card-body">
+                    <% if(currentUser && currentUser.username === "admin"){ %>
+                        <div>
+                            <a href="/index/menu/beverages/new/bottled" class="btn btn-primary">New</a>
+                        </div>
+                    <% } %>
+                    <h5 class="card-title">Bottled Beer</h5>
+                    <p class="card-text">Small: $4.99 | Large: $8.99</p>
+                    <hr class="hr-thick">
+                    <% menuItems.forEach(function(menuItem){ %>
+                        <% if(menuItem.genre === 0){ %>
+                        
+                            <% if(currentUser && currentUser.username === "admin"){ %>
+                                <form class="delete-form" action="/index/menu/beverages/<%= menuItem._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                            
+                            <p class="card-text p-no-margin"><%= menuItem.name %></p>
+                            <hr class="hr-no-margin">
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                
+                
+                <div class="card-body">
+                    <% if(currentUser && currentUser.username === "admin"){ %>
+                        <div>
+                            <a href="/index/menu/beverages/new/tap" class="btn btn-primary">New</a>
+                        </div>
+                    <% } %>
+                    <h5 class="card-title">Beer On Tap</h5>
+                    <p class="card-text">Pint | Pitcher</p>
+                    <hr class="hr-thick">
+                    <% menuItems.forEach(function(menuItem){ %>
+                        <% if(menuItem.genre === 1){ %>
+                            
+                            <% if(currentUser && currentUser.username === "admin"){ %>
+                                <form class="delete-form" action="/index/menu/beverages/<%= menuItem._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                            
+                            <p class="card-text float-left p-no-margin"><%= menuItem.name %></p>
+                            <p class="card-text text-right p-no-margin">$<%= menuItem.price[0] %> | $<%= menuItem.price[1] %></p>
+                            <hr class="hr-no-margin">
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6">
+            <div class="card">
+                
+                
+                <div class="card-body">
+                    <% if(currentUser && currentUser.username === "admin"){ %>
+                        <div>
+                            <a href="/index/menu/beverages/new/sake" class="btn btn-primary">New</a>
+                        </div>
+                    <% } %>
+                    <h5 class="card-title">Sake</h5>
+                    <p class="card-text">Small | Large</p>
+                    <hr class="hr-thick">
+                    <% menuItems.forEach(function(menuItem){ %>
+                        <% if(menuItem.genre === 2){ %>
+                            
+                            <% if(currentUser && currentUser.username === "admin"){ %>
+                                <form class="delete-form" action="/index/menu/beverages/<%= menuItem._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                            
+                            <p class="card-text float-left p-no-margin"><%= menuItem.name %></p>
+                            <p class="card-text text-right p-no-margin">$<%= menuItem.price[0] %>
+                                <% if(!!menuItem.price[1]){ %>
+                                    | $<%= menuItem.price[1] %>
+                                <% } %>
+                            </p>
+                            <hr class="hr-no-margin">
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="col-md-1"></div>
+        
+        <div class="col-md-5 col-sm-6">
+            <div class="card">
+                
+                
+                <div class="card-body">
+                    <% if(currentUser && currentUser.username === "admin"){ %>
+                        <div>
+                            <a href="/index/menu/beverages/new/wine" class="btn btn-primary">New</a>
+                        </div>
+                    <% } %>
+                    <h5 class="card-title">Wine</h5>
+                    <p class="card-text">By the glass</p>
+                    <hr class="hr-thick">
+                    <% menuItems.forEach(function(menuItem){ %>
+                        <% if(menuItem.genre === 3){ %>
+                            
+                            <% if(currentUser && currentUser.username === "admin"){ %>
+                                <form class="delete-form" action="/index/menu/beverages/<%= menuItem._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                            
+                            <p class="card-text float-left p-no-margin"><%= menuItem.name %></p>
+                            <p class="card-text text-right p-no-margin">$<%= menuItem.price %></p>
+                            <hr class="hr-no-margin">
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="col-md-5 col-sm-6">
+            <div class="card">
+                
+                
+                <div class="card-body">
+                    <% if(currentUser && currentUser.username === "admin"){ %>
+                        <div>
+                            <a href="/index/menu/beverages/new/soda" class="btn btn-primary">New</a>
+                        </div>
+                    <% } %>
+                    <h5 class="card-title">Soda</h5>
+                    <hr class="hr-thick">
+                    <% menuItems.forEach(function(menuItem){ %>
+                        <% if(menuItem.genre === 4){ %>
+                            
+                            <% if(currentUser && currentUser.username === "admin"){ %>
+                                <form class="delete-form" action="/index/menu/beverages/<%= menuItem._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                            <% } %>
+                            
+                            <p class="card-text float-left p-no-margin"><%= menuItem.name %></p>
+                            <p class="card-text text-right p-no-margin">$<%= menuItem.price %></p>
+                            <hr class="hr-no-margin">
+                        <% } %>
+                    <% }); %>
+                    
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="col-md-1"></div>
+        
+    </div>
+    
+    <a id="jump_to_desserts" class="anchor"></a>
+    
+    <h1 class="text-center">Desserts</h1>
+    <hr>
+    
+    <div class="row text-center">
+        <% menuItems.forEach(function(menuItem){ %>
+            <% if(menuItem.genre === 5){ %>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top" src="<%= menuItem.image %>">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"><%= menuItem.name %></h5>
+                            <hr>
+                            <a href="/index/menu/beverages/<%= menuItem._id %>" class="btn btn-primary btn-sm" id="more-info-btn">More Info</a>
+                            <form action="/myFavorites/<%= menuItem._id %>?_method=PUT" method="POST">
+                                    <input class="form-control" type="text" name="menuItem[name]" value="<%= menuItem.name %>" style="display: none;">
+                                    <input class="form-control" type="text" name="menuItem[image]" value="<%= menuItem.image %>" style="display: none;">
+                                    <input class="form-control" type="text" name="menuItem[url]" value="beverages/<%= menuItem._id %>" style="display: none;">
+                                    <button class="btn btn-warning btn-sm">Favorite</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            <% }; %>
+        <% }); %>
+    </div> 
+
+</div>
+
+<% include ../../partials/footer %> 
